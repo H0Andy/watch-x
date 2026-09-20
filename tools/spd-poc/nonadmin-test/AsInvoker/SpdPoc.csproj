@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>WatchX.SpdPoc</RootNamespace>
+    <AssemblyName>spd-poc-nonadmin</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!-- Read-only POC: never ship write paths -->
+    <DefineConstants>$(DefineConstants);SPD_POC_READ_ONLY</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Prefer PawnIO path; package still embeds WinRing0 as fallback â€?we never call WinRing0 in POC code -->
+    <PackageReference Include="RAMSPDToolkit" Version="1.6.1" />
+  </ItemGroup>
+</Project>
+

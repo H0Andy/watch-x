@@ -1,0 +1,34 @@
+node_modules
+dist
+dist-electron
+release
+*.log
+.DS_Store
+Thumbs.db
+.env
+.env.*
+.vscode
+.idea
+*.local
+
+# SPD helper build / local dumps (keep sources)
+helpers/spd-helper/bin/
+helpers/spd-helper/obj/
+helpers/spd-helper/dist/
+helpers/spd-helper/raw-cache/
+helpers/spd-helper/spd-helper-scan.json
+helpers/spd-helper/tests/bin/
+helpers/spd-helper/tests/obj/
+helpers/spd-helper/*.png
+helpers/spd-helper/timing-probe.*
+helpers/spd-helper/merged-memory-modules.json
+helpers/spd-helper/profiles-parse-result.json
+helpers/spd-helper/die-id-result.json
+helpers/spd-helper/spd-analysis.json
+
+# Local POC / tooling artifacts
+tools/spd-poc/**/bin/
+tools/spd-poc/**/obj/
+tools/spd-poc/*.bin
+tools/**/bin/
+tools/**/obj/

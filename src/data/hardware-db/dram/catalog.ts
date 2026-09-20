@@ -1,0 +1,59 @@
+import type { DramDatabaseFile } from '../schema'
+
+/** Offline Kingston DDR5 module variants (mirrors kingston-ddr5.json). */
+export const kingstonDdr5Db: DramDatabaseFile = {
+  schemaVersion: 1,
+  databaseVersion: '2026.09.20.1',
+  productLineNotes:
+    'Kingston FURY DDR5 KF* part numbers do NOT encode DRAM manufacturer or die revision. Die letters in Kingston Server Premier (KSM*) and Design-In (CBD*) decoders must never be applied to KF* Fury SKUs.',
+  entries: [
+    {
+      id: 'kingston-kf556c40-16-variant-obs-2026-09-20',
+      createdAt: '2026-09-20',
+      updatedAt: '2026-09-20',
+      moduleManufacturer: 'Kingston',
+      modulePartNumbers: ['KF556C40-16', 'KF556C40BB-16', 'KF556C40'],
+      dramManufacturer: 'Samsung',
+      match: {
+        memoryType: 'DDR5',
+        capacityGB: 16,
+        rank: 1,
+        spdRevision: '1.2',
+        dramManufacturerId: '0xCE',
+        dramManufacturer: 'Samsung',
+        moduleRevision: 0,
+        dramStepping: 0,
+        xmpDataRateMTs: 5200,
+        xmpCL: 40,
+      },
+      identification: {
+        die: null,
+        dieDensity: null,
+        icPartNumber: null,
+        processGeneration: null,
+      },
+      evidence: [
+        'Local SPD dump pair (0x50/0x51): DRAM JEDEC ID 0xCE Samsung',
+        'Local SPD: Rank 1R (byte 234), SPD rev 1.2, module rev 0, DRAM stepping 0x00',
+        'Local SPD XMP 3.0 Profile Ultra DDR5-5200 CL40 @1.25V (advertised support only)',
+        'Kingston FURY official PN decoder has no DRAM die field for KF* SKUs',
+        'Insufficient evidence to map stepping 0x00 → marketing die name',
+      ],
+      sources: ['spd-measured', 'vendor-part-number-decoder', 'local-confirmed'],
+      confidence: 'unknown',
+      notes:
+        'Observed hardware sample for framework validation. Die deliberately left null. Same PN may ship other DRAM variants later — do not collapse to a single die map.',
+    },
+  ],
+}
+
+/** Placeholder Samsung IC/die catalog (mirrors samsung-ddr5.json). */
+export const samsungDdr5Db: DramDatabaseFile = {
+  schemaVersion: 1,
+  databaseVersion: '2026.09.20.1',
+  productLineNotes:
+    'Placeholder for Samsung IC / die documentation entries. No marketing die claims without citable vendor or confirmed local sample mapping.',
+  entries: [],
+}
+
+export const dramDatabaseFiles: DramDatabaseFile[] = [kingstonDdr5Db, samsungDdr5Db]

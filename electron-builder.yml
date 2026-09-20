@@ -1,0 +1,96 @@
+appId: com.watchx.monitor
+productName: Watch X
+copyright: Copyright © 2026 Watch X
+asar: true
+npmRebuild: false
+executableName: WatchX
+directories:
+  output: release
+  buildResources: build
+files:
+  - dist
+  - dist-electron
+extraMetadata:
+  name: watch-x
+win:
+  icon: build/icon.ico
+  target:
+    - target: nsis
+      arch:
+        - x64
+    - target: portable
+      arch:
+        - x64
+  artifactName: WatchX-${version}-Setup-${arch}.${ext}
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  allowElevation: true
+  createDesktopShortcut: always
+  createStartMenuShortcut: true
+  shortcutName: Watch X
+  uninstallDisplayName: Watch X
+  installerIcon: build/installerIcon.ico
+  uninstallerIcon: build/uninstallerIcon.ico
+  installerHeaderIcon: build/installerIcon.ico
+  deleteAppDataOnUninstall: false
+  runAfterFinish: true
+  menuCategory: true
+  license: build/license.txt
+  include: build/installer.nsh
+  installerLanguages:
+    - zh_CN
+    - en_US
+  displayLanguageSelector: true
+  artifactName: WatchX-${version}-Setup-${arch}.${ext}
+portable:
+  artifactName: WatchX-${version}-Portable-${arch}.${ext}
+mac:
+  icon: build/icon.icns
+  category: public.app-category.utilities
+  target:
+    - target: dmg
+      arch:
+        - universal
+    - target: zip
+      arch:
+        - universal
+  hardenedRuntime: false
+  artifactName: WatchX-${version}-mac-${arch}.${ext}
+  darkModeSupport: true
+dmg:
+  title: Watch X ${version}
+  icon: build/icon.icns
+  artifactName: WatchX-${version}-mac-${arch}.${ext}
+  contents:
+    - x: 140
+      y: 200
+    - x: 420
+      y: 200
+      type: link
+      path: /Applications
+linux:
+  icon: build/icons
+  category: Utility
+  synopsis: Cross-platform hardware monitor
+  description: Watch X monitors CPU, GPU, memory, temperature, fans, disk, network and processes on Windows, macOS and Linux.
+  desktop:
+    entry:
+      Name: Watch X
+      Comment: CPU GPU memory temperature and fan monitor
+      Categories: Utility;Monitor;System;
+      StartupWMClass: WatchX
+  target:
+    - target: AppImage
+      arch:
+        - x64
+    - target: deb
+      arch:
+        - x64
+  artifactName: WatchX-${version}-linux-${arch}.${ext}
+  executableName: watch-x
+deb:
+  packageCategory: utils
+appImage:
+  artifactName: WatchX-${version}-linux-${arch}.AppImage

@@ -1,0 +1,26 @@
+[
+  {
+    "address": "0x50",
+    "pn": "KF556C40-16",
+    "serial": "6222A3C6",
+    "dram": "Samsung",
+    "byte4": "0x04",
+    "byte6": "0x20",
+    "byte234": "0x00",
+    "ranks": 1,
+    "asymmetric": false,
+    "bytes": 1024
+  },
+  {
+    "address": "0x51",
+    "pn": "KF556C40-16",
+    "serial": "0C32A39F",
+    "dram": "Samsung",
+    "byte4": "0x04",
+    "byte6": "0x20",
+    "byte234": "0x00",
+    "ranks": 1,
+    "asymmetric": false,
+    "bytes": 1024
+  }
+]

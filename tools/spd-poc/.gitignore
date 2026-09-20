@@ -1,0 +1,12 @@
+bin/
+obj/
+*.bin
+*.log
+spd-poc-report.json
+spd-poc-full*.json
+vendor-notes/PawnIO_setup.exe
+vendor-notes/RAMSPDToolkit/
+vendor-notes/SPDReader/
+vendor-notes/SPDReader-master/
+vendor-notes/*.zip
+_api_probe/
