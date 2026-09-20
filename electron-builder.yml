@@ -73,7 +73,6 @@ mac:
   hardenedRuntime: false
   artifactName: WatchX-${version}-mac-${arch}.${ext}
   darkModeSupport: true
-  syncDesktopName: true
 dmg:
   title: Watch X ${version}
   icon: build/icon.icns
