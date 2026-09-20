@@ -16,7 +16,7 @@ if (!source) {
   process.exit(1)
 }
 
-# Ensure multi-size PNGs via Python/Pillow when available (optional)
+// Ensure multi-size PNGs via Python/Pillow when available (optional)
 try {
   execFileSync(
     'python',
