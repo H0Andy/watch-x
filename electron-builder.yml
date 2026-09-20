@@ -10,6 +10,19 @@ directories:
 files:
   - dist
   - dist-electron
+# Bundled into resources/ so install/run does not need network:
+# - helpers/spd-helper.exe (+ .NET runtime, self-contained)
+# - vendor/PawnIO/PawnIO_setup.exe (official unmodified offline installer)
+extraResources:
+  - from: helpers/spd-helper/dist
+    to: helpers
+    filter:
+      - "**/*"
+  - from: vendor/PawnIO
+    to: vendor/PawnIO
+    filter:
+      - "PawnIO_setup.exe"
+      - "README.txt"
 extraMetadata:
   name: watch-x
 win:

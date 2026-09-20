@@ -1,0 +1,10 @@
+# Offline vendor binaries (downloaded at build time, shipped inside the installer)
+#
+# - PawnIO_setup.exe  Official unmodified PawnIO installer
+#
+# These files are large — do not commit them.
+# `npm run fetch:vendor` / `npm run dist:win` will download when missing.
+
+*.exe
+*.msi
+!README.md

@@ -17,8 +17,13 @@ spd-helper scan --out <json> [--raw-dir <dir>]
 ## Build
 
 ```powershell
+# Dev / CI tests (framework-dependent)
 dotnet build -c Release helpers/spd-helper/SpdHelper.csproj
 dotnet test helpers/spd-helper/tests/SpdHelper.Tests.csproj
+
+# Release publish for the Windows installer (self-contained, no .NET on user PC)
+npm run build:spd-helper
+# → helpers/spd-helper/dist/spd-helper.exe (+ runtime), copied to resources/helpers by electron-builder
 ```
 
 ## Permission model (B860 test machine)

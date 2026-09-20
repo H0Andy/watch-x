@@ -1,6 +1,7 @@
 {
   "name": "watch-x",
   "productName": "Watch X",
+  "desktopName": "WatchX",
   "version": "1.0.0",
   "description": "Cross-platform CPU, GPU, memory, temperature and fan monitor",
   "author": "zheng",
@@ -11,13 +12,14 @@
     "dev": "vite",
     "build": "vite build",
     "icons": "node scripts/make-icons.cjs",
-    "build:spd-helper": "dotnet build -c Release helpers/spd-helper/SpdHelper.csproj && dotnet publish -c Release helpers/spd-helper/SpdHelper.csproj -o helpers/spd-helper/dist --self-contained false",
+    "fetch:vendor": "node scripts/fetch-vendor.cjs",
+    "build:spd-helper": "dotnet publish -c Release helpers/spd-helper/SpdHelper.csproj -r win-x64 --self-contained true -o helpers/spd-helper/dist",
     "test:spd": "dotnet test helpers/spd-helper/tests/SpdHelper.Tests.csproj --nologo && node --experimental-strip-types scripts/test-ddr5-spd-decode.mts && node --experimental-strip-types scripts/test-ddr5-spd-profiles.mts && npx tsx scripts/test-dram-db.mts",
-    "dist": "npm run icons && npm run build:spd-helper && vite build && electron-builder",
-    "dist:win": "npm run icons && npm run build:spd-helper && vite build && electron-builder --win",
+    "dist": "npm run icons && npm run fetch:vendor && npm run build:spd-helper && vite build && electron-builder",
+    "dist:win": "npm run icons && npm run fetch:vendor && npm run build:spd-helper && vite build && electron-builder --win",
     "dist:mac": "npm run icons && vite build && electron-builder --mac",
     "dist:linux": "npm run icons && vite build && electron-builder --linux",
-    "pack:dir": "npm run icons && npm run build:spd-helper && vite build && electron-builder --dir"
+    "pack:dir": "npm run icons && npm run fetch:vendor && npm run build:spd-helper && vite build && electron-builder --dir"
   },
   "dependencies": {
     "systeminformation": "^5.27.10"
