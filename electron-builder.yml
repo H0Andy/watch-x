@@ -10,22 +10,20 @@ directories:
 files:
   - dist
   - dist-electron
-# Bundled into resources/ so install/run does not need network:
-# - helpers/spd-helper.exe (+ .NET runtime, self-contained)
-# - vendor/PawnIO/PawnIO_setup.exe (official unmodified offline installer)
-extraResources:
-  - from: helpers/spd-helper/dist
-    to: helpers
-    filter:
-      - "**/*"
-  - from: vendor/PawnIO
-    to: vendor/PawnIO
-    filter:
-      - "PawnIO_setup.exe"
-      - "README.txt"
 extraMetadata:
   name: watch-x
 win:
+  # Windows-only offline payloads (spd-helper + official PawnIO installer)
+  extraResources:
+    - from: helpers/spd-helper/dist
+      to: helpers
+      filter:
+        - "**/*"
+    - from: vendor/PawnIO
+      to: vendor/PawnIO
+      filter:
+        - "PawnIO_setup.exe"
+        - "README.txt"
   icon: build/icon.ico
   target:
     - target: nsis
@@ -62,16 +60,20 @@ portable:
 mac:
   icon: build/icon.icns
   category: public.app-category.utilities
+  # Native optional deps (temperature sensors) break universal merges — ship per-arch.
   target:
     - target: dmg
       arch:
-        - universal
+        - arm64
+        - x64
     - target: zip
       arch:
-        - universal
+        - arm64
+        - x64
   hardenedRuntime: false
   artifactName: WatchX-${version}-mac-${arch}.${ext}
   darkModeSupport: true
+  syncDesktopName: true
 dmg:
   title: Watch X ${version}
   icon: build/icon.icns

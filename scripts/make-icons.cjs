@@ -16,7 +16,7 @@ if (!source) {
   process.exit(1)
 }
 
-// Ensure multi-size PNGs via Python/Pillow when available
+# Ensure multi-size PNGs via Python/Pillow when available (optional)
 try {
   execFileSync(
     'python',
@@ -40,9 +40,9 @@ for s in [16, 24, 32, 48, 64, 128, 256, 512, 1024]:
 print('png set ok')
 `,
     ],
-    { stdio: 'inherit' },
+    { stdio: ['ignore', 'inherit', 'ignore'] },
   )
-} catch (error) {
+} catch {
   console.warn('Pillow resize skipped, using existing icon.png')
 }
 
